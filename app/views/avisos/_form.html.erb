@@ -1,0 +1,27 @@
+<%= form_with(model: aviso, local: true) do |form| %>
+  <% if aviso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(aviso.errors.count, "error") %> prohibited this aviso from being saved:</h2>
+
+      <ul>
+      <% aviso.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :aviso_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :corpo %>
+    <%= form.text_field :corpo, id: :aviso_corpo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
