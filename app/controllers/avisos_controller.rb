@@ -1,5 +1,6 @@
 class AvisosController < ApplicationController
   before_action :set_aviso, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /avisos
   # GET /avisos.json
@@ -25,7 +26,7 @@ class AvisosController < ApplicationController
   # POST /avisos.json
   def create
     @aviso = Aviso.new(aviso_params)
-
+    @aviso.user = current_user
     respond_to do |format|
       if @aviso.save
         format.html { redirect_to @aviso, notice: 'Aviso was successfully created.' }

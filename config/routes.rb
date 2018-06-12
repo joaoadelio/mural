@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :avisos
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'avisos#homepage'
+  resources :avisos do
+    collection do
+      get 'homepage'
+      post 'homepage'
+    end
+  end
 end
