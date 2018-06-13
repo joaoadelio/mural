@@ -1,6 +1,7 @@
 class AvisosController < ApplicationController
   before_action :set_aviso, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :homepage
+  load_and_authorize_resource :except => [:homepage]
 
   # GET /avisos
   # GET /avisos.json
