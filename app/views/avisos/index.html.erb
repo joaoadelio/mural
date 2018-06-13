@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Avisos</h1>
+<h1>Meus Avisos</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -13,17 +13,19 @@
 
   <tbody>
     <% @avisos.each do |aviso| %>
+      <% if aviso.user_id = current_user %>
       <tr>
         <td><%= aviso.title %></td>
         <td><%= aviso.corpo %></td>
-        <td><%= link_to 'Show', aviso %></td>
-        <td><%= link_to 'Edit', edit_aviso_path(aviso) %></td>
-        <td><%= link_to 'Destroy', aviso, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Visualizar', aviso, :class=> "btn btn-warning" %></td>
+        <td><%= link_to 'Editar', edit_aviso_path(aviso), :class=> "btn btn-info"%></td>
+        <td><%= link_to 'Excluir', aviso, method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" %></td>
       </tr>
+  <%end%>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Aviso', new_aviso_path %>
+<%= link_to 'Novo aviso', new_aviso_path, :class=> "btn btn-outline-success btn-lg" %>

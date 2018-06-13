@@ -7,11 +7,17 @@ class AvisosController < ApplicationController
   # GET /avisos.json
   def index
     @avisos = Aviso.all
+    @avisos = Aviso.where("user_id = ?", current_user.id)
   end
 
   # GET /avisos/1
   # GET /avisos/1.json
   def show
+  end
+
+  def homepage
+    @avisos = Aviso.all
+    @avisos = @avisos.where("UPPER(corpo) like ?", "%#{params[:search_term].to_s.upcase}%") unless params[:search_term].blank?
   end
 
   # GET /avisos/new

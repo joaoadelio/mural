@@ -11,5 +11,5 @@
   <%= @aviso.corpo %>
 </p>
 
-<%= link_to 'Edit', edit_aviso_path(@aviso) %> |
-<%= link_to 'Back', avisos_path %>
+<%= link_to 'Editar', edit_aviso_path(@aviso), :class=> "btn btn-primary" %> |
+<%= link_to 'Voltar', avisos_path, :class=> "btn btn-info" %>
